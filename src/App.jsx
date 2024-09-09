@@ -20,8 +20,8 @@ function App() {
       console.log(error);
       if (error) {
         setData([]);
-        setShowMore(false);
-        <Loading />;
+        setShowLoading(false);
+        console.log(error);
       }
     }
   }
@@ -39,7 +39,7 @@ function App() {
       {data.length === 0 && !showLoading && (
         <div className="btn-center">
           <button className="btn btn-title" onClick={() => getTours()}>
-            Show Posts
+            Refresh
           </button>
         </div>
       )}
