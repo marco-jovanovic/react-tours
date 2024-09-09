@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 function Tour({
   id,
@@ -12,14 +11,6 @@ function Tour({
   data,
   setData,
 }) {
-  const toggleText = (id) => {
-    return data.map((item) => {
-      if (item.id === id) {
-        setShowMore(!showMore);
-      }
-    });
-  };
-
   const deletePost = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
@@ -29,14 +20,10 @@ function Tour({
       <img src={image} alt={name} />
       <h5>{name}</h5>
       <p>
-        {info.slice(0, 200) + '...'}
-        <span onClick={() => toggleText(id)} className="read_more">
-          {!showMore ? 'Read More' : ''}
-        </span>
-        {showMore && id === id ? info.slice(200) : ''}{' '}
-        <span onClick={() => toggleText(id)} className="read_more">
-          {showMore ? 'Show less' : ''}
-        </span>
+        {showMore ? info : `${info.slice(0, 200)}`}{' '}
+        <button onClick={() => setShowMore(!showMore)} className="read_more">
+          {!showMore ? 'read more' : 'show less'}
+        </button>
       </p>
 
       <button onClick={() => deletePost(id)} className="btn">

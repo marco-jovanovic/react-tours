@@ -34,7 +34,11 @@ function App() {
 
   return (
     <>
-      {data.length !== 0 && <h2 className="text-center">Our Tours</h2>}
+      {data.length !== 0 && !showLoading ? (
+        <h2 className="text-center">Our Tourse</h2>
+      ) : (
+        <h2 className="text-center">Refetch </h2>
+      )}
 
       {data.length === 0 && !showLoading && (
         <div className="btn-center">
